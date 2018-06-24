@@ -1,1 +1,1 @@
-export { default as Root } from './containers/Root'
+export { default as RootPage } from './containers/RootPage'

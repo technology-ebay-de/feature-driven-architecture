@@ -1,1 +1,1 @@
-export { default as User } from './containers/User'
+export { default as UserPage } from './containers/UserPage'
