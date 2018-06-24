@@ -1,1 +1,1 @@
-export const getError = state => state.features.error
+export const selectError = state => state.features.error

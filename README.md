@@ -1,5 +1,14 @@
 # Scoped Redux example
 
+## Todo
+
+- Use state based router
+- Add propTypes
+
+## Changes to the original proposal
+
+- selector names should start with "select" prefix
+
 ## Available Scripts
 
 In the project directory, you can run:

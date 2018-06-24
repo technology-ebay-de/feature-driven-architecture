@@ -1,15 +1,13 @@
 import pick from 'lodash/pick'
-import { HANDLE_USER, HANDLE_STARRED, LOAD_MORE_STARRED } from './actionTypes'
+import { LOAD, HANDLE_STARRED, LOAD_MORE_STARRED } from './actionTypes'
 
 const defaultState = {
   starred: [],
+  isFetchingMoreStarred: false,
 }
 
 const states = {
-  [HANDLE_USER]: (state, user) => ({
-    ...state,
-    user,
-  }),
+  [LOAD]: () => defaultState,
   [HANDLE_STARRED]: (state, { result, ...rest }) => ({
     ...state,
     ...rest,

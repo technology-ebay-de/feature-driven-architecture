@@ -3,10 +3,12 @@ import thunk from 'redux-thunk'
 import { createLogger } from 'redux-logger'
 import DevTools from '../lib/components/DevTools'
 import { reducer as errorReducer } from '../features/error'
+import { reducer as profileReducer } from '../features/profile'
 import { reducer as userReducer } from '../pages/user'
 
 const featuresReducer = combineReducers({
   error: errorReducer,
+  profile: profileReducer,
 })
 
 const pagesReducer = combineReducers({

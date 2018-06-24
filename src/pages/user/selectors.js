@@ -1,1 +1,1 @@
-export const getUser = state => state.pages.user
+export const selectUser = state => state.pages.user

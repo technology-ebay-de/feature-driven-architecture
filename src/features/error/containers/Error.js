@@ -1,14 +1,14 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import ErrorRenderer from '../renderers/Error';
-import { dismiss } from '../actionCreators';
-import { getError } from '../selectors';
+import React from 'react'
+import { connect } from 'react-redux'
+import ErrorRenderer from '../renderers/Error'
+import { dismiss } from '../actionCreators'
+import { selectError } from '../selectors'
 
-const Error = props => (props.message ? <ErrorRenderer {...props} /> : null);
+const Error = props => (props.message ? <ErrorRenderer {...props} /> : null)
 
 export default connect(
-  getError,
+  selectError,
   {
     onDismiss: dismiss,
   }
-)(Error);
+)(Error)

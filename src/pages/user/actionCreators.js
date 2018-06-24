@@ -6,19 +6,10 @@ import {
   HANDLE_USER,
   HANDLE_STARRED,
 } from './actionTypes'
-import { getUser } from './selectors'
+import { selectUser } from './selectors'
 
 export const load = ({ login }) => dispatch => {
   dispatch({ type: LOAD, payload: login })
-
-  api
-    .fetchUser(login)
-    .then(({ result }) => {
-      dispatch({ type: HANDLE_USER, payload: result })
-    })
-    .catch(err => {
-      dispatch(handleError(err))
-    })
 
   api
     .fetchStarred(login)
@@ -33,7 +24,7 @@ export const load = ({ login }) => dispatch => {
 export const loadMore = () => (dispatch, getState) => {
   dispatch({ type: LOAD_MORE_STARRED })
   api
-    .call(getUser(getState()).nextPageUrl)
+    .call(selectUser(getState()).nextPageUrl)
     .then(payload => {
       dispatch({ type: HANDLE_STARRED, payload })
     })

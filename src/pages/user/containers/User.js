@@ -1,12 +1,10 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import zip from 'lodash/zip'
+import { Profile } from '../../../features/profile'
 import List from '../../../lib/components/List'
 import * as actions from '../actionCreators'
-import LoadingProfile from '../renderers/LoadingProfile'
-import Profile from '../renderers/Profile'
 import Repo from '../renderers/Repo'
-import { getUser } from '../selectors'
+import { selectUser } from '../selectors'
 
 const renderRepo = props => <Repo {...props} key={props.repo.fullName} />
 
@@ -33,7 +31,6 @@ class User extends Component {
   render() {
     const {
       login,
-      user,
       starred,
       onLoadMore,
       nextPageUrl,
@@ -43,7 +40,7 @@ class User extends Component {
 
     return (
       <Fragment>
-        {user ? <Profile {...user} /> : <LoadingProfile login={login} />}
+        <Profile login={login} />
         <hr />
         <List
           renderItem={renderRepo}
@@ -61,7 +58,7 @@ class User extends Component {
 
 export default connect(
   (state, props) => ({
-    ...getUser(state),
+    ...selectUser(state),
     login: props.match.params.login,
   }),
   {
