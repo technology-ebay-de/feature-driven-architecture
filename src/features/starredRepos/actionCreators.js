@@ -1,12 +1,7 @@
 import * as api from '../../lib/api'
 import { handle as handleError } from '../../features/error'
-import {
-  LOAD,
-  LOAD_MORE_STARRED,
-  HANDLE_USER,
-  HANDLE_STARRED,
-} from './actionTypes'
-import { selectUser } from './selectors'
+import { LOAD, LOAD_MORE, HANDLE } from './actionTypes'
+import { selectStarredRepos } from './selectors'
 
 export const load = ({ login }) => dispatch => {
   dispatch({ type: LOAD, payload: login })
@@ -14,7 +9,7 @@ export const load = ({ login }) => dispatch => {
   api
     .fetchStarred(login)
     .then(payload => {
-      dispatch({ type: HANDLE_STARRED, payload })
+      dispatch({ type: HANDLE, payload })
     })
     .catch(err => {
       dispatch(handleError(err))
@@ -22,11 +17,11 @@ export const load = ({ login }) => dispatch => {
 }
 
 export const loadMore = () => (dispatch, getState) => {
-  dispatch({ type: LOAD_MORE_STARRED })
+  dispatch({ type: LOAD_MORE })
   api
-    .call(selectUser(getState()).nextPageUrl)
+    .call(selectStarredRepos(getState()).nextPageUrl)
     .then(payload => {
-      dispatch({ type: HANDLE_STARRED, payload })
+      dispatch({ type: HANDLE, payload })
     })
     .catch(err => {
       dispatch(handleError(err))

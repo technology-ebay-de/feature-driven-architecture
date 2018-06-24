@@ -4,38 +4,26 @@ import { createLogger } from 'redux-logger'
 import DevTools from '../lib/components/DevTools'
 import { reducer as errorReducer } from '../features/error'
 import { reducer as profileReducer } from '../features/profile'
-import { reducer as userReducer } from '../pages/user'
+import { reducer as starredReposReducer } from '../features/starredRepos'
 
-const featuresReducer = combineReducers({
-  error: errorReducer,
-  profile: profileReducer,
-})
-
-const pagesReducer = combineReducers({
-  user: userReducer,
-})
-
-const rootReducer = combineReducers({
-  features: featuresReducer,
-  pages: pagesReducer,
+const reducer = combineReducers({
+  features: combineReducers({
+    error: errorReducer,
+    profile: profileReducer,
+    starredRepos: starredReposReducer,
+  }),
+  pages: {},
 })
 
 export default preloadedState => {
   const store = createStore(
-    rootReducer,
+    reducer,
     preloadedState,
     compose(
       applyMiddleware(thunk, createLogger()),
       DevTools.instrument()
     )
   )
-
-  if (module.hot) {
-    // Enable Webpack hot module replacement for reducers
-    module.hot.accept('../reducers', () => {
-      store.replaceReducer(rootReducer)
-    })
-  }
 
   return store
 }
