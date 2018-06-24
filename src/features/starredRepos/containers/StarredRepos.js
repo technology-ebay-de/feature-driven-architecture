@@ -1,6 +1,5 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { StarredRepos } from '../../../features/profile'
 import List from '../../../lib/components/List'
 import * as actions from '../actionCreators'
 import Repo from '../renderers/Repo'
@@ -19,6 +18,7 @@ class StarredReposContainer extends Component {
 
   load(prevLogin) {
     const { login, onLoad } = this.props
+
     if (login && login !== prevLogin) {
       onLoad({ login })
     }
@@ -28,7 +28,7 @@ class StarredReposContainer extends Component {
     const {
       login,
       starred,
-      onLoadMore,
+      onLoadNext,
       nextPageUrl,
       lastPageUrl,
       status,
@@ -38,7 +38,7 @@ class StarredReposContainer extends Component {
       <List
         renderItem={renderRepo}
         items={starred}
-        onLoadMore={onLoadMore}
+        onLoadNext={onLoadNext}
         loadingLabel={`Loading ${login}'s starred...`}
         nextPageUrl={nextPageUrl}
         lastPageUrl={lastPageUrl}
@@ -52,6 +52,6 @@ export default connect(
   selectStarredRepos,
   {
     onLoad: actions.load,
-    onLoadMore: actions.loadMore,
+    onLoadNext: actions.loadNext,
   }
 )(StarredReposContainer)

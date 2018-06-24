@@ -1,13 +1,13 @@
 import * as api from '../../lib/api'
 import { handle as handleError } from '../../features/error'
-import { LOAD, LOAD_MORE, HANDLE } from './actionTypes'
+import { LOAD, LOAD_NEXT, HANDLE } from './actionTypes'
 import { selectStarredRepos } from './selectors'
 
 export const load = ({ login }) => dispatch => {
   dispatch({ type: LOAD, payload: login })
 
   api
-    .fetchStarred(login)
+    .call(`users/${login}/starred`)
     .then(payload => {
       dispatch({ type: HANDLE, payload })
     })
@@ -16,8 +16,8 @@ export const load = ({ login }) => dispatch => {
     })
 }
 
-export const loadMore = () => (dispatch, getState) => {
-  dispatch({ type: LOAD_MORE })
+export const loadNext = () => (dispatch, getState) => {
+  dispatch({ type: LOAD_NEXT })
   api
     .call(selectStarredRepos(getState()).nextPageUrl)
     .then(payload => {

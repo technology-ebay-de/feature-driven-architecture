@@ -1,9 +1,13 @@
-# Scoped Redux example
+# Zero code framework for Redux.
+
+A set of conventions to make Redux more maintainable and less verbose.
 
 ## Todo
 
 - Use state based router
+- Use reselect
 - Add propTypes
+- Nothing here should not be shown when loading
 
 ## Changes to the original proposal
 

@@ -6,7 +6,7 @@ export const load = ({ login }) => dispatch => {
   dispatch({ type: LOAD, payload: login })
 
   api
-    .fetchUser(login)
+    .call(`users/${login}`)
     .then(({ result }) => {
       dispatch({ type: HANDLE, payload: result })
     })

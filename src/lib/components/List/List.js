@@ -31,7 +31,7 @@ const List = props => {
     items,
     renderItem,
     loadingLabel,
-    onLoadMore,
+    onLoadNext,
   } = props
 
   const isEmpty = items.length === 0
@@ -50,7 +50,7 @@ const List = props => {
     <div>
       {items.map(renderItem)}
       {!isSinglePage &&
-        !isLastPage && <LoadMoreButton status={status} onClick={onLoadMore} />}
+        !isLastPage && <LoadMoreButton status={status} onClick={onLoadNext} />}
     </div>
   )
 }
@@ -60,13 +60,12 @@ List.propTypes = {
   renderItem: PropTypes.func.isRequired,
   items: PropTypes.array.isRequired,
   status: PropTypes.oneOf(['loading', 'loaded']).isRequired,
-  onLoadMore: PropTypes.func.isRequired,
-  pageCount: PropTypes.number,
+  onLoadNext: PropTypes.func.isRequired,
   nextPageUrl: PropTypes.string,
 }
 
 List.defaultProps = {
-  status: 'loaded',
+  status: 'loading',
   loadingLabel: 'Loading...',
   items: [],
 }

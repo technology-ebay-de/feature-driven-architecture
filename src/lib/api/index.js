@@ -38,7 +38,3 @@ export const call = endpoint => {
     })
   )
 }
-
-export const fetchUser = login => call(`users/${login}`)
-
-export const fetchStarred = login => call(`users/${login}/starred`)
