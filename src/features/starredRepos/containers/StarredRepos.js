@@ -9,10 +9,6 @@ import { selectStarredRepos } from '../selectors'
 const renderRepo = props => <Repo {...props} key={props.repo.fullName} />
 
 class StarredReposContainer extends Component {
-  static defaultProps = {
-    isLoading: false,
-  }
-
   componentDidMount() {
     this.load()
   }
@@ -35,7 +31,7 @@ class StarredReposContainer extends Component {
       onLoadMore,
       nextPageUrl,
       lastPageUrl,
-      isLoading,
+      status,
     } = this.props
 
     return (
@@ -46,7 +42,7 @@ class StarredReposContainer extends Component {
         loadingLabel={`Loading ${login}'s starred...`}
         nextPageUrl={nextPageUrl}
         lastPageUrl={lastPageUrl}
-        isLoading={isLoading}
+        status={status}
       />
     )
   }

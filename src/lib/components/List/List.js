@@ -1,9 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const LoadMoreButton = ({ isLoading, onClick }) => (
-  <button style={{ fontSize: '150%' }} onClick={onClick} disabled={isLoading}>
-    {isLoading ? 'Loading...' : 'Load More'}
+const LoadMoreButton = ({ status, onClick }) => (
+  <button
+    style={{ fontSize: '150%' }}
+    onClick={onClick}
+    disabled={status === 'loading'}
+  >
+    {status === 'loading' ? 'Loading...' : 'Load More'}
   </button>
 )
 
@@ -21,7 +25,7 @@ const Empty = () => (
 
 const List = props => {
   const {
-    isLoading,
+    status,
     nextPageUrl,
     lastPageUrl,
     items,
@@ -34,7 +38,7 @@ const List = props => {
   const isLastPage = !nextPageUrl
   const isSinglePage = nextPageUrl === lastPageUrl
 
-  if (isEmpty && isLoading) {
+  if (isEmpty && status === 'loading') {
     return <Loading label={loadingLabel} />
   }
 
@@ -46,9 +50,7 @@ const List = props => {
     <div>
       {items.map(renderItem)}
       {!isSinglePage &&
-        !isLastPage && (
-          <LoadMoreButton isLoading={isLoading} onClick={onLoadMore} />
-        )}
+        !isLastPage && <LoadMoreButton status={status} onClick={onLoadMore} />}
     </div>
   )
 }
@@ -57,14 +59,14 @@ List.propTypes = {
   loadingLabel: PropTypes.string.isRequired,
   renderItem: PropTypes.func.isRequired,
   items: PropTypes.array.isRequired,
-  isLoading: PropTypes.bool.isRequired,
+  status: PropTypes.oneOf(['loading', 'loaded']).isRequired,
   onLoadMore: PropTypes.func.isRequired,
   pageCount: PropTypes.number,
   nextPageUrl: PropTypes.string,
 }
 
 List.defaultProps = {
-  isLoading: true,
+  status: 'loaded',
   loadingLabel: 'Loading...',
   items: [],
 }

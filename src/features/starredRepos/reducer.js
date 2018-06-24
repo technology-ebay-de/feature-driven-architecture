@@ -3,7 +3,7 @@ import { LOAD, HANDLE, LOAD_MORE } from './actionTypes'
 
 const defaultState = {
   starred: [],
-  isLoading: false,
+  status: 'loaded',
 }
 
 const states = {
@@ -11,7 +11,7 @@ const states = {
   [HANDLE]: (state, { result, ...rest }) => ({
     ...state,
     ...rest,
-    isLoading: false,
+    status: 'loaded',
     starred: [
       ...state.starred,
       ...result.map(data => ({
@@ -24,7 +24,7 @@ const states = {
   }),
   [LOAD_MORE]: state => ({
     ...state,
-    isLoading: true,
+    status: 'loading',
   }),
 }
 
