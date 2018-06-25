@@ -7,7 +7,7 @@ A set of conventions to make Redux more maintainable and less verbose.
 - Use state based router
 - Use reselect
 - Add propTypes
-- Nothing here should not be shown when loading
+- Make it work on codesandbox
 
 ## Changes to the original proposal
 
