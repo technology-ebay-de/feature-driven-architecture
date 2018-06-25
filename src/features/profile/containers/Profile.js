@@ -23,14 +23,14 @@ class ProfileContainer extends Component {
   }
 
   render() {
-    const { status, login, avatarUrl, name } = this.props
+    const { status, login, user } = this.props
 
     if (status === 'loading') {
       return <Loading login={login} />
     }
 
     if (status === 'loaded') {
-      return <Profile login={login} avatarUrl={avatarUrl} name={name} />
+      return <Profile {...user} />
     }
 
     return <Empty />

@@ -50,7 +50,14 @@ const List = props => {
     <div>
       {items.map(renderItem)}
       {!isSinglePage &&
-        !isLastPage && <LoadMoreButton status={status} onClick={onLoadNext} />}
+        !isLastPage && (
+          <LoadMoreButton
+            status={status}
+            onClick={() => {
+              onLoadNext({ url: nextPageUrl })
+            }}
+          />
+        )}
     </div>
   )
 }

@@ -10,8 +10,8 @@ export const load = ({ login }) => dispatch => {
     .then(({ result }) => {
       dispatch({ type: HANDLE_RESPONSE, payload: result })
     })
-    .catch(err => {
-      dispatch({ type: HANDLE_ERROR, payload: err })
-      dispatch(handleError(err))
+    .catch(error => {
+      dispatch({ type: HANDLE_ERROR, payload: error })
+      dispatch(handleError(error))
     })
 }

@@ -1,17 +1,18 @@
 import { LOAD, HANDLE_RESPONSE, HANDLE_ERROR } from './actionTypes'
 
 const defaultState = {
+  user: null,
   status: 'initial',
 }
 
 const states = {
   [LOAD]: state => ({
-    ...state,
+    ...defaultState,
     status: 'loading',
   }),
   [HANDLE_RESPONSE]: (state, user) => ({
     ...state,
-    ...user,
+    user,
     status: 'loaded',
   }),
   [HANDLE_ERROR]: state => ({

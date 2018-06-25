@@ -4,6 +4,6 @@ export const dismiss = () => dispatch => {
   dispatch({ type: DISMISS })
 }
 
-export const handle = err => dispatch => {
-  dispatch({ type: HANDLE, payload: err })
+export const handle = error => dispatch => {
+  dispatch({ type: HANDLE, payload: error })
 }
