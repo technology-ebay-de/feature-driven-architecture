@@ -59,7 +59,7 @@ List.propTypes = {
   loadingLabel: PropTypes.string.isRequired,
   renderItem: PropTypes.func.isRequired,
   items: PropTypes.array.isRequired,
-  status: PropTypes.oneOf(['loading', 'loaded']).isRequired,
+  status: PropTypes.oneOf(['initial', 'loading', 'loaded', 'error']).isRequired,
   onLoadNext: PropTypes.func.isRequired,
   nextPageUrl: PropTypes.string,
 }

@@ -17,9 +17,9 @@ class StarredReposContainer extends Component {
   }
 
   load(prevLogin) {
-    const { login, onLoad } = this.props
+    const { login, onLoad, status } = this.props
 
-    if (login && login !== prevLogin) {
+    if (login && login !== prevLogin && status !== 'loading') {
       onLoad({ login })
     }
   }

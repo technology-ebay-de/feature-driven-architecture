@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../actionCreators'
+import { selectProfile } from '../selectors'
 import Loading from '../renderers/Loading'
 import Profile from '../renderers/Profile'
-import { selectProfile } from '../selectors'
+import Empty from '../renderers/Empty'
 
 class ProfileContainer extends Component {
   componentDidMount() {
@@ -15,8 +16,8 @@ class ProfileContainer extends Component {
   }
 
   load(prevLogin) {
-    const { login, onLoad } = this.props
-    if (login && login !== prevLogin) {
+    const { login, onLoad, status } = this.props
+    if (login && login !== prevLogin && status !== 'loading') {
       onLoad({ login })
     }
   }
@@ -28,7 +29,11 @@ class ProfileContainer extends Component {
       return <Loading login={login} />
     }
 
-    return <Profile login={login} avatarUrl={avatarUrl} name={name} />
+    if (status === 'loaded') {
+      return <Profile login={login} avatarUrl={avatarUrl} name={name} />
+    }
+
+    return <Empty />
   }
 }
 

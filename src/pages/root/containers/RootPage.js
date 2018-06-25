@@ -1,19 +1,34 @@
-import React, { Fragment } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { Search } from '../../../features/search'
-import { Error } from '../../../features/error'
+import { Error, dismiss as dismissError } from '../../../features/error'
 
-const RootPage = ({ search, location, history, children }) => (
-  <Fragment>
-    <Search
-      value={location.pathname.substr(1)}
-      onSearch={({ value }) => {
-        history.push(`/${value}`)
-      }}
-    />
-    <Error />
-    {children}
-  </Fragment>
-)
+class RootPageContainer extends Component {
+  componentDidUpdate(prevProps) {
+    if (prevProps.location.pathname !== this.props.location.pathname) {
+      this.props.onChangeLocation()
+    }
+  }
 
-export default connect()(RootPage)
+  render() {
+    const { location, history } = this.props
+    return (
+      <Fragment>
+        <Search
+          value={location.pathname.substr(1)}
+          onSearch={({ value }) => {
+            history.push(`/${value}`)
+          }}
+        />
+        <Error />
+      </Fragment>
+    )
+  }
+}
+
+export default connect(
+  null,
+  {
+    onChangeLocation: dismissError,
+  }
+)(RootPageContainer)

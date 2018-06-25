@@ -1,14 +1,17 @@
 import pick from 'lodash/pick'
-import { LOAD, HANDLE, LOAD_NEXT } from './actionTypes'
+import { LOAD, HANDLE_RESPONSE, HANDLE_ERROR, LOAD_NEXT } from './actionTypes'
 
 const defaultState = {
   starred: [],
-  status: 'loading',
+  status: 'initial',
 }
 
 const states = {
-  [LOAD]: () => defaultState,
-  [HANDLE]: (state, { result, ...rest }) => ({
+  [LOAD]: state => ({
+    ...state,
+    status: 'loading',
+  }),
+  [HANDLE_RESPONSE]: (state, { result, ...rest }) => ({
     ...state,
     ...rest,
     status: 'loaded',
@@ -21,6 +24,10 @@ const states = {
         },
       })),
     ],
+  }),
+  [HANDLE_ERROR]: state => ({
+    ...defaultState,
+    status: 'error',
   }),
   [LOAD_NEXT]: state => ({
     ...state,
