@@ -1,9 +1,10 @@
 # Zero code framework for Redux.
 
-A set of conventions to make Redux more maintainable and less verbose.
+A set of conventions and principles to make Redux more maintainable and less verbose. This example is a port of [redux real-world](https://github.com/reduxjs/redux/blob/master/examples/real-world/) example
 
 ## Todo
 
+- Port repos page from real-world
 - Use state based router
 - Use reselect
 - Add propTypes
