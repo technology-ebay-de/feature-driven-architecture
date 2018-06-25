@@ -15,7 +15,6 @@ const handleError = dispatch => error => {
 
 export const load = ({ login }) => dispatch => {
   dispatch({ type: LOAD, payload: login })
-
   api
     .call(`users/${login}/starred`)
     .then(payload => {
