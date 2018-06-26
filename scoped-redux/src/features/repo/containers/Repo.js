@@ -1,12 +1,24 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { LOADING_STATES } from '../../../constants'
 import Repo from '../../../components/Repo'
 import * as actions from '../actionCreators'
 import { selectRepo } from '../selectors'
 import Loading from '../renderers/Loading'
 import Empty from '../renderers/Empty'
 
+const propTypes = {
+  fullName: PropTypes.string.isRequired,
+  status: PropTypes.oneOf(LOADING_STATES).isRequired,
+  onLoad: PropTypes.func.isRequired,
+  repo: PropTypes.shape({}),
+  owner: PropTypes.shape({}),
+}
+
 class RepoContainer extends Component {
+  static propTypes = propTypes
+
   componentDidMount() {
     this.load()
   }

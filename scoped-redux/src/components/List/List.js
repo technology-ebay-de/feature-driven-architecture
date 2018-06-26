@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { LOADING_STATES } from '../../constants'
 
 const LoadMoreButton = ({ status, onClick }) => (
   <button
@@ -66,7 +67,7 @@ List.propTypes = {
   loadingLabel: PropTypes.string.isRequired,
   renderItem: PropTypes.func.isRequired,
   items: PropTypes.array.isRequired,
-  status: PropTypes.oneOf(['initial', 'loading', 'loaded', 'error']).isRequired,
+  status: PropTypes.oneOf(LOADING_STATES).isRequired,
   onLoadNext: PropTypes.func.isRequired,
   nextPageUrl: PropTypes.string,
 }

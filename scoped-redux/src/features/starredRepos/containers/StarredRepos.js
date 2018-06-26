@@ -1,11 +1,25 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { LOADING_STATES } from '../../../constants'
 import List from '../../../components/List'
 import Repo from '../../../components/Repo'
 import * as actions from '../actionCreators'
 import { selectStarredRepos } from '../selectors'
 
+const propTypes = {
+  login: PropTypes.string.isRequired,
+  status: PropTypes.oneOf(LOADING_STATES).isRequired,
+  onLoad: PropTypes.func.isRequired,
+  onLoadNext: PropTypes.func.isRequired,
+  nextPageUrl: PropTypes.string,
+  lastPageUrl: PropTypes.string,
+  starred: PropTypes.array.isRequired,
+}
+
 class StarredReposContainer extends Component {
+  static propTypes = propTypes
+
   componentDidMount() {
     this.load()
   }

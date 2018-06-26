@@ -1,4 +1,4 @@
-# Zero code framework for Redux.
+# Redux architecture for large applications.
 
 A set of conventions and principles to make Redux more maintainable and less verbose. This example is a port of [redux real-world](https://github.com/reduxjs/redux/blob/master/examples/real-world/) example. It **will** appear as over engineered, because this structure is designed for large applications.
 
@@ -6,13 +6,12 @@ A set of conventions and principles to make Redux more maintainable and less ver
 
 - Use state based router
 - Root currently isn't a page (mb we need relations or just containers)
-- Use reselect
-- Add propTypes
+- Use reselect?
 - Make it work on codesandbox
 
 ## Changes to the original proposal
 
-- selector names should start with "select" prefix
+- selector names should start with "select" prefix instead of "get", because get is overused
 
 ## Structure
 

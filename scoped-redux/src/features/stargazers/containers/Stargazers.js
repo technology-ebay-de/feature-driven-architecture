@@ -1,11 +1,25 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { LOADING_STATES } from '../../../constants'
 import List from '../../../components/List'
 import Profile from '../../../components/Profile'
 import * as actions from '../actionCreators'
 import { selectStargazers } from '../selectors'
 
+const propTypes = {
+  fullName: PropTypes.string.isRequired,
+  status: PropTypes.oneOf(LOADING_STATES).isRequired,
+  onLoad: PropTypes.func.isRequired,
+  onLoadNext: PropTypes.func.isRequired,
+  nextPageUrl: PropTypes.string,
+  lastPageUrl: PropTypes.string,
+  users: PropTypes.array.isRequired,
+}
+
 class StargazersContainer extends Component {
+  static propTypes = propTypes
+
   componentDidMount() {
     this.load()
   }

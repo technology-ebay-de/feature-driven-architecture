@@ -1,5 +1,4 @@
-import React, {Fragment} from 'react'
-import PropTypes from 'prop-types'
+import React, { Fragment } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { Route } from 'react-router-dom'
 import { RootPage } from '../pages/root'

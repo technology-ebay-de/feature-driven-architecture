@@ -1,12 +1,23 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { LOADING_STATES } from '../../../constants'
 import Profile from '../../../components/Profile'
 import * as actions from '../actionCreators'
 import { selectProfile } from '../selectors'
 import Loading from '../renderers/Loading'
 import Empty from '../renderers/Empty'
 
+const propTypes = {
+  login: PropTypes.string.isRequired,
+  status: PropTypes.oneOf(LOADING_STATES).isRequired,
+  onLoad: PropTypes.func.isRequired,
+  user: PropTypes.shape(),
+}
+
 class ProfileContainer extends Component {
+  static propTypes = propTypes
+
   componentDidMount() {
     this.load()
   }

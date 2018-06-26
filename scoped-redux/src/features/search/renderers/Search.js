@@ -1,4 +1,10 @@
 import React, { Component, Fragment } from 'react'
+import PropTypes from 'prop-types'
+
+const propTypes = {
+  value: PropTypes.string.isRequired,
+  onSearch: PropTypes.func.isRequired,
+}
 
 const Input = ({ value, onSearch, onChange }) => (
   <input
@@ -37,6 +43,8 @@ const DevToolsHint = () => (
 )
 
 export default class Search extends Component {
+  static propTypes = propTypes
+
   constructor(props) {
     super(props)
     this.state = { value: props.value }

@@ -1,6 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-export default ({ message, onDismiss }) => (
+const propTypes = {
+  message: PropTypes.string.isRequired,
+  onDismiss: PropTypes.func.isRequired,
+}
+
+const Error = ({ message, onDismiss }) => (
   <p style={{ backgroundColor: '#e99', padding: 10 }}>
     <b>{message}</b>{' '}
     <button
@@ -13,3 +19,7 @@ export default ({ message, onDismiss }) => (
     </button>
   </p>
 )
+
+Error.propTypes = propTypes
+
+export default Error
