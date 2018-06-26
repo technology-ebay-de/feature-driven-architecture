@@ -1,3 +1,4 @@
+import pick from 'lodash/pick'
 import { LOAD, HANDLE_RESPONSE, HANDLE_ERROR } from './actionTypes'
 
 const defaultState = {
@@ -12,7 +13,7 @@ const states = {
   }),
   [HANDLE_RESPONSE]: (state, user) => ({
     ...state,
-    user,
+    user: pick(user, 'login', 'avatarUrl', 'name'),
     status: 'loaded',
   }),
   [HANDLE_ERROR]: state => ({

@@ -12,8 +12,8 @@ const propTypes = {
   fullName: PropTypes.string.isRequired,
   status: PropTypes.oneOf(LOADING_STATES).isRequired,
   onLoad: PropTypes.func.isRequired,
-  repo: PropTypes.shape({}),
-  owner: PropTypes.shape({}),
+  repo: PropTypes.shape(),
+  owner: PropTypes.shape(),
 }
 
 class RepoContainer extends Component {
