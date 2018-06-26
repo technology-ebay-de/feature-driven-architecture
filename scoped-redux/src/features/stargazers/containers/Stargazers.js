@@ -1,31 +1,31 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import List from '../../../components/List'
-import Repo from '../../../components/Repo'
+import Profile from '../../../components/Profile'
 import * as actions from '../actionCreators'
-import { selectStarredRepos } from '../selectors'
+import { selectStargazers } from '../selectors'
 
-class StarredReposContainer extends Component {
+class StargazersContainer extends Component {
   componentDidMount() {
     this.load()
   }
 
   componentDidUpdate(prevProps) {
-    this.load(prevProps.login)
+    this.load(prevProps.fullName)
   }
 
-  load(prevLogin) {
-    const { login, onLoad, status } = this.props
+  load(prevfullName) {
+    const { fullName, onLoad, status } = this.props
 
-    if (login && login !== prevLogin && status !== 'loading') {
-      onLoad({ login })
+    if (fullName && fullName !== prevfullName && status !== 'loading') {
+      onLoad({ fullName })
     }
   }
 
   render() {
     const {
-      login,
-      starred,
+      fullName,
+      users,
       onLoadNext,
       nextPageUrl,
       lastPageUrl,
@@ -34,10 +34,10 @@ class StarredReposContainer extends Component {
 
     return (
       <List
-        renderItem={props => <Repo {...props} key={props.repo.fullName} />}
-        items={starred}
+        renderItem={props => <Profile {...props} key={props.login} />}
+        items={users}
         onLoadNext={onLoadNext}
-        loadingLabel={`Loading ${login}'s starred...`}
+        loadingLabel={`Loading ${fullName}'s stargazers...`}
         nextPageUrl={nextPageUrl}
         lastPageUrl={lastPageUrl}
         status={status}
@@ -47,9 +47,9 @@ class StarredReposContainer extends Component {
 }
 
 export default connect(
-  selectStarredRepos,
+  selectStargazers,
   {
     onLoad: actions.load,
     onLoadNext: actions.loadNext,
   }
-)(StarredReposContainer)
+)(StargazersContainer)

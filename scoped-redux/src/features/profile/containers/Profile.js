@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Profile from '../../../components/Profile'
 import * as actions from '../actionCreators'
 import { selectProfile } from '../selectors'
 import Loading from '../renderers/Loading'
-import Profile from '../renderers/Profile'
 import Empty from '../renderers/Empty'
 
 class ProfileContainer extends Component {

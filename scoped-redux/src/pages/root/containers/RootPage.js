@@ -5,21 +5,16 @@ import { Error, dismiss as dismissError } from '../../../features/error'
 
 class RootPageContainer extends Component {
   componentDidUpdate(prevProps) {
-    if (prevProps.location.pathname !== this.props.location.pathname) {
-      this.props.onChangeLocation()
+    if (prevProps.search !== this.props.search) {
+      this.props.onChangeSearch()
     }
   }
 
   render() {
-    const { location, history } = this.props
+    const { search, onSearch } = this.props
     return (
       <Fragment>
-        <Search
-          value={location.pathname.substr(1)}
-          onSearch={({ value }) => {
-            history.push(`/${value}`)
-          }}
-        />
+        <Search value={search} onSearch={onSearch} />
         <Error />
       </Fragment>
     )
@@ -27,8 +22,13 @@ class RootPageContainer extends Component {
 }
 
 export default connect(
-  null,
+  (state, { location, history }) => ({
+    search: location.pathname.substr(1),
+    onSearch: ({ value }) => {
+      history.push(`/${value}`)
+    },
+  }),
   {
-    onChangeLocation: dismissError,
+    onChangeSearch: dismissError,
   }
 )(RootPageContainer)

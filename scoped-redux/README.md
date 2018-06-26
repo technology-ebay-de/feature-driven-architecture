@@ -1,11 +1,11 @@
 # Zero code framework for Redux.
 
-A set of conventions and principles to make Redux more maintainable and less verbose. This example is a port of [redux real-world](https://github.com/reduxjs/redux/blob/master/examples/real-world/) example
+A set of conventions and principles to make Redux more maintainable and less verbose. This example is a port of [redux real-world](https://github.com/reduxjs/redux/blob/master/examples/real-world/) example. It **will** appear as over engineered, because this structure is designed for large applications.
 
 ## Todo
 
-- Port repos page from real-world
 - Use state based router
+- Root currently isn't a page (mb we need relations or just containers)
 - Use reselect
 - Add propTypes
 - Make it work on codesandbox
@@ -13,6 +13,13 @@ A set of conventions and principles to make Redux more maintainable and less ver
 ## Changes to the original proposal
 
 - selector names should start with "select" prefix
+
+## Structure
+
+### `src/components` - components shared between the features
+
+- Can be containers or presentational.
+- Can not connect directly to the store, router or any other central instance.
 
 ## Available Scripts
 

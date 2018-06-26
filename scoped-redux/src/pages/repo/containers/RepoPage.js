@@ -1,8 +1,15 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
+import { Repo } from '../../../features/repo'
+import { Stargazers } from '../../../features/stargazers'
 
-const RepoPage = ({ login }) => <Fragment>test</Fragment>
+const RepoPage = ({ fullName }) => (
+  <Fragment>
+    <Repo fullName={fullName} />
+    <Stargazers fullName={fullName} />
+  </Fragment>
+)
 
 export default connect((state, props) => ({
-  login: props.match.params.login,
+  fullName: `${props.match.params.login}/${props.match.params.repo}`,
 }))(RepoPage)
