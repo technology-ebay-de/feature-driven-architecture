@@ -30,11 +30,17 @@ src
 
 Every page contains everything that is rendered inside of a document. It is designed to use features and connect them. It is an interoperability layer between the features.
 
+### Must not
+
 - A page must not import from other pages.
+
+### Must
 
 - A page must export a component.
 - A page must export a route for the router.
 - A page must use the following naming schema for the action types `page/{page}/{action}`.
+
+### May
 
 - A page may export a reducer.
 - A page may connect to the store.
@@ -49,12 +55,18 @@ Every page contains everything that is rendered inside of a document. It is desi
 
 A feature is designed to describe a very specific functionality in a way, that is encapsulated and reusable on different pages. In order to make a feature as easy removable as possible with the least possible chance of leaving unused code behind, we need to keep it as cohesive as possible.
 
+### Must not
+
 - A feature must not import from other features.
 - A feature must not import from pages.
 - A feature must not access the global `state`.
 
+### Must
+
 - A feature must export a component.
 - A feature must use the following naming schema for the action types `feature/{feature}/{action}`.
+
+### May
 
 - A feature may export a route for the router.
 - A feature may export a reducer.
