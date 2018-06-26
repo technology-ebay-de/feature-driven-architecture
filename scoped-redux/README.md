@@ -1,6 +1,6 @@
 # Redux architecture for large applications.
 
-A set of conventions and principles to make Redux more maintainable and less verbose. This example is a port of [redux real-world](https://github.com/reduxjs/redux/blob/master/examples/real-world/) example. It **will** appear as over engineered, because this structure is designed for large applications.
+A set of conventions and principles to make Redux more maintainable. This example is a port of [redux real-world](https://github.com/reduxjs/redux/blob/master/examples/real-world/) example. It **will** appear as over engineered, because this structure is designed for large applications.
 
 ## Directory structure
 
