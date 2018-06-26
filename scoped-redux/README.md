@@ -28,7 +28,7 @@ src
 
 ## Page (`src/pages/{page}`)
 
-Every page contains everything that is rendered inside of a document. It is designed to use features and connect them. It is an interoperability layer between the features.
+Every page contains everything that is rendered inside of a document. It is designed to use features and connect them. It is an interoperability layer between the features. A change on one page should never break a different page.
 
 ### Must not
 
@@ -53,7 +53,7 @@ Every page contains everything that is rendered inside of a document. It is desi
 
 ## Feature (`src/features/{feature}`)
 
-A feature is designed to describe a very specific functionality in a way, that is encapsulated and reusable on different pages. In order to make a feature as easy removable as possible with the least possible chance of leaving unused code behind, we need to keep it as cohesive as possible.
+A feature is designed to describe a very specific functionality in a way, that is encapsulated and reusable on different pages. In order to make a feature as easy removable as possible with the least possible chance of leaving unused code behind, we need to keep it as cohesive as possible. A change in a feature should never break a different feature.
 
 ### Must not
 
