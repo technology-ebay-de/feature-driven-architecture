@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import List from '../../../lib/components/List'
+import List from '../../../components/List'
 import * as actions from '../actionCreators'
 import Repo from '../renderers/Repo'
 import { selectStarredRepos } from '../selectors'
