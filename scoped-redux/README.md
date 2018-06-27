@@ -5,25 +5,25 @@ A set of conventions and principles to make Redux more maintainable. This exampl
 ## Directory structure
 
 ```
-src
-  components
-  features
-    {feature}
-      containers
-      actionCreators
-      actionTypes
-      reducer
-      renderers
-      selectors
-  pages
-    {page}
-      containers
-      actionCreators
-      actionTypes
-      reducer
-      selectors
-  store
-  router
+src/
+├── components/
+├── store/
+├── router/
+├── features/
+|   ├── {feature}/
+│   |   ├── containers/
+│   |   ├── actionCreators/
+│   |   ├── actionTypes/
+│   |   ├── renderers/
+│   |   ├── selectors/
+│   |   └── reducer
+└── pages/
+    └── {page}/
+        ├── containers/
+        ├── actionCreators/
+        ├── actionTypes/
+        ├── selectors/
+        └── reducer
 ```
 
 ## Page (`src/pages/{page}`)
@@ -53,7 +53,7 @@ Every page contains everything that is rendered inside of a document. It is desi
 
 ## Feature (`src/features/{feature}`)
 
-A feature is self-contained, renderable, user facing functionality, that is encapsulated and reusable on different pages without side effects. In order to make a feature as easily removable as possible with the least possible chance of leaving unused code behind, we need to keep it as cohesive as possible. A change in a feature should never break a different feature.
+A feature is self-contained, renderable, user facing functionality, that is encapsulated and reusable on different pages without side effects. In order to make a feature as easily removable as possible with the least possible chance of leaving unused code behind, we need to keep it as cohesive as possible. A change in a feature should never break a different feature. You want to be able to swap out a feature on one page without breaking any other pages.
 
 ### Must not
 
