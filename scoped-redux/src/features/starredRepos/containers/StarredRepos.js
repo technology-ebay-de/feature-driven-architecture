@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { LOADING_STATES } from '../../../constants'
 import List from '../../../components/List'
 import Repo from '../../../components/Repo'
+import Title from '../renderers/Title'
 import * as actions from '../actionCreators'
 import { selectStarredRepos } from '../selectors'
 
@@ -47,15 +48,18 @@ class StarredReposContainer extends Component {
     } = this.props
 
     return (
-      <List
-        renderItem={props => <Repo {...props} key={props.repo.fullName} />}
-        items={starred}
-        onLoadNext={onLoadNext}
-        loadingLabel={`Loading ${login}'s starred...`}
-        nextPageUrl={nextPageUrl}
-        lastPageUrl={lastPageUrl}
-        status={status}
-      />
+      <Fragment>
+        <Title />
+        <List
+          renderItem={props => <Repo {...props} key={props.repo.fullName} />}
+          items={starred}
+          onLoadNext={onLoadNext}
+          loadingLabel={`Loading ${login}'s starred...`}
+          nextPageUrl={nextPageUrl}
+          lastPageUrl={lastPageUrl}
+          status={status}
+        />
+      </Fragment>
     )
   }
 }

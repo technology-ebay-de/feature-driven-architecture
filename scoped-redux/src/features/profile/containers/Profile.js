@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { LOADING_STATES } from '../../../constants'
@@ -7,6 +7,7 @@ import * as actions from '../actionCreators'
 import { selectProfile } from '../selectors'
 import Loading from '../renderers/Loading'
 import Empty from '../renderers/Empty'
+import Title from '../renderers/Title'
 
 const propTypes = {
   login: PropTypes.string.isRequired,
@@ -36,15 +37,14 @@ class ProfileContainer extends Component {
   render() {
     const { status, login, user } = this.props
 
-    if (status === 'loading') {
-      return <Loading login={login} />
-    }
-
-    if (status === 'loaded') {
-      return <Profile {...user} />
-    }
-
-    return <Empty />
+    return (
+      <Fragment>
+        <Title />
+        {status === 'loading' && <Loading login={login} />}
+        {status === 'loaded' && <Profile {...user} />}
+        {status === 'initial' && <Empty />}
+      </Fragment>
+    )
   }
 }
 

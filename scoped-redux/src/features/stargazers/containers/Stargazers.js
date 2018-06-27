@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { LOADING_STATES } from '../../../constants'
 import List from '../../../components/List'
 import Profile from '../../../components/Profile'
+import Title from '../renderers/Title'
 import * as actions from '../actionCreators'
 import { selectStargazers } from '../selectors'
 
@@ -47,15 +48,18 @@ class StargazersContainer extends Component {
     } = this.props
 
     return (
-      <List
-        renderItem={props => <Profile {...props} key={props.login} />}
-        items={users}
-        onLoadNext={onLoadNext}
-        loadingLabel={`Loading ${fullName}'s stargazers...`}
-        nextPageUrl={nextPageUrl}
-        lastPageUrl={lastPageUrl}
-        status={status}
-      />
+      <Fragment>
+        <Title />
+        <List
+          renderItem={props => <Profile {...props} key={props.login} />}
+          items={users}
+          onLoadNext={onLoadNext}
+          loadingLabel={`Loading ${fullName}'s stargazers...`}
+          nextPageUrl={nextPageUrl}
+          lastPageUrl={lastPageUrl}
+          status={status}
+        />
+      </Fragment>
     )
   }
 }

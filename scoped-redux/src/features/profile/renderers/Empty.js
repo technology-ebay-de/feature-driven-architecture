@@ -1,9 +1,9 @@
 import React from 'react'
 
 const Empty = () => (
-  <h1>
+  <h2>
     <i>Profile empty state.</i>
-  </h1>
+  </h2>
 )
 
 export default Empty
