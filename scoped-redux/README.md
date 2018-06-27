@@ -16,14 +16,16 @@ src/
 │   |   ├── actionTypes/
 │   |   ├── renderers/
 │   |   ├── selectors/
-│   |   └── reducer
+│   |   ├── reducer
+│   |   └── index
 └── pages/
     └── {page}/
         ├── containers/
         ├── actionCreators/
         ├── actionTypes/
         ├── selectors/
-        └── reducer
+        ├── reducer
+        └── index
 ```
 
 ## Page (`src/pages/{page}`)
