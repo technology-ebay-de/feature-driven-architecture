@@ -8,7 +8,7 @@ While React provides us with components and redux with state management layer, t
 
 Structuring application based on basic Redux examples imposes a high risk of namespace collisions of action types and action creators. It also comes with no guidance about when to connect a component to the store and leads to a props passing overhead, when too many props need to be passed from the connected top level component down the deeply nested tree. Global state brings another problem: it is easy to forget to remove properties when component stops using them over time, which leads to state pollution.
 
-React has no opinions on how to structure an application since components are universal. We need a structure that enforces high cohesion principle by keeping related code close to each other. Also, we want to enforce separation of [container and presentational](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) components because it leads to a cleaner code and better reuse.
+React has no opinions on how to structure an application since components are universal. We need a structure that enforces high cohesion principle by keeping code implementing same feature in the same directory. Also, we want to enforce separation of [container and presentational](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) components because it leads to a cleaner code and better reuse.
 
 Another unsolved problem when every component can use every component is all components become highly interconnected at some point. To avoid this, we introduce 2 more complex types "feature" and "page". Also, we keep shared "components" clearly separated.
 
@@ -141,7 +141,22 @@ Provides a router component that uses routes from pages.
 
 ## Todo
 
-- Use state based router
+- Use state based router?
+- How to use subroute in a feature?
+- How to implement and test side effects in features? (effect(fn)?)
+- How to get the data of one feature from another?
+- Implement a new feature that demonstrates data exchange between features:
+  - On profile page:
+    - Display a badge in front of a repository listing
+  - On repo page:
+    - Display a bronze badge in front of search if repository has > 100 stars
+    - Display a silver badge in front of search if repository has > 500 stars
+    - Display a gold badge in front of search if repository has > 1000 stars
+- Remove dependency to features from store by using registration pattern. Currently when removing a feature, it needs to be removed from store.
+- Describe the role of selectors in features and pages
+- Describe the role of reducers in features and pages
 - Root currently isn't a page (mb we need to reuse it over relations or containers)
 - Use reselect?
 - Make it work on codesandbox
+- Flow/TypeScript?
+- Graphql
