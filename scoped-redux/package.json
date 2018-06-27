@@ -1,6 +1,6 @@
 {
-  "name": "real-world",
-  "version": "0.0.1",
+  "name": "scoped-redux",
+  "version": "0.1.0",
   "private": true,
   "devDependencies": {
     "react-scripts": "^1.1.4",
