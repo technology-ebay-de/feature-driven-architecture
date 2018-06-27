@@ -19,7 +19,7 @@ const reducer = combineReducers({
   pages: {},
 })
 
-export default preloadedState => {
+export const configure = preloadedState => {
   const store = createStore(
     reducer,
     preloadedState,

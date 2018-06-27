@@ -1,11 +1,11 @@
-import React, {Fragment} from "react";
-import { render } from "react-dom";
-import { Provider } from "react-redux";
-import Router from "./router/Router";
-import configureStore from "./store/configureStore";
+import React, { Fragment } from 'react'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { Router } from './router'
+import { configure as configureStore } from './store'
 import DevTools from './components/DevTools'
 
-const store = configureStore();
+const store = configureStore()
 
 render(
   <Provider store={store}>
@@ -14,5 +14,5 @@ render(
       <DevTools />
     </Fragment>
   </Provider>,
-  document.getElementById("root")
-);
+  document.getElementById('root')
+)
