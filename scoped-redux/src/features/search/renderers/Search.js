@@ -29,7 +29,7 @@ const RepoHint = () => (
   <p>
     Code on{' '}
     <a
-      href="https://github.com/reduxjs/redux"
+      href="https://github.com/technology-ebay-de/move-examples/tree/master/scoped-redux"
       target="_blank"
       rel="noopener noreferrer"
     >
