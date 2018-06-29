@@ -71,18 +71,18 @@ src/
 
 Every page renders contents of the entire document. It is designed to use features and connect them. It acts as an interoperability layer between the features. A change on one page should never break a different page.
 
-### Must not
+#### Must not
 
 - A page must not import from other pages.
 - A page must not access features state `state.features.{feature}`.
 
-### Must
+#### Must
 
 - A page must export a component.
 - A page must export a route for the router.
 - A page must use the following naming schema for the action types `page/{page}/{action}`.
 
-### May
+#### May
 
 - A page may export a reducer.
 - A page may connect to the store.
@@ -97,7 +97,7 @@ Every page renders contents of the entire document. It is designed to use featur
 
 A feature is a self-contained, renderable, user-facing functionality, that is encapsulated and reusable on different pages.
 
-### Goals
+#### Goals
 
 - Be able to remove a feature completely by removing its directory, without leaving unused code behind.
 - Allow more autonomy in feature development for different teams.
@@ -106,25 +106,25 @@ A feature is a self-contained, renderable, user-facing functionality, that is en
 - Enforce separation of [container and presentational](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) components, because it leads to a cleaner code.
 
 
-### How
+#### How
 
 - We need to keep it as cohesive as possible - action creators, action types, selectors, components and everything else a feature needs should be in a corresponding feature directory.
 - Extract code into shared directories only when required by more than one feature and only if functionality is complex enough.
 - Always use one subtree in the global state: `state.features.{feature}`. Never access anything else from state directly.
 - Accept props from the page if there is external data that a feature doesn't have.
 
-### Must not
+#### Must not
 
 - A feature must not import from other features.
 - A feature must not import from pages.
 - A feature must not access any other state than `state.features.{feature}`.
 
-### Must
+#### Must
 
 - A feature must export a component.
 - A feature must use the following naming schema for the action types `feature/{feature}/{action}`.
 
-### May
+#### May
 
 - A feature may export a reducer.
 - A feature may connect to the store.
@@ -138,16 +138,16 @@ A feature is a self-contained, renderable, user-facing functionality, that is en
 
 Every directory corresponds to one or to a set of components shared between the features or pages.
 
-### Must not
+#### Must not
 
 - Must not connect directly to the store, router or any other global system.
 
-### Must
+#### Must
 
 - If directory contains one component, its name must start upper case.
 - If directory contains multiple components, its name must start lower case.
 
-### May
+#### May
 
 - May be containers or presentational components.
 
@@ -159,7 +159,7 @@ We use a single store for the entire application. Here you may:
 - Combine all reducers.
 - Apply middleware.
 
-### State shape
+#### State shape
 
 ```json
 {
