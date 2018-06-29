@@ -95,7 +95,7 @@ Every page renders contents of the entire document. It is designed to use featur
 
 ## Feature (`src/features/{feature}/`)
 
-A feature is a self-contained, renderable, user-facing functionality, that is encapsulated and reusable on different pages.
+A feature is a self-contained, renderable, user-facing functionality, that is encapsulated and reusable on different pages. Feature is to be defined by the engineers in a technical scope. Product managers may have different understanding of a feature.
 
 #### Goals
 
@@ -181,11 +181,16 @@ Provides a router component that uses routes from pages.
 ## Todo
 
 - Where does feature starts and where does it ends? What if feature gets too big?
+- What is MUST and MAY regarding directory structure in a feature?
 - How to implement and test side effects in features?
 - How to get the data of one feature from another?
+  - Introduce clusters.
+  - Page local clusters.
+  - Shared clusters.
   - Implement a new feature that demonstrates data exchange between features.
 - Remove dependency to features in store by using registration pattern. Currently when removing a feature, it needs to be removed from store.
 - How to use subroute in a feature (nested routing)?
+- Once all routes are in features and pages, can we render an overview of all routes somewhere?
 - Describe the role of selectors in features and pages
 - Describe the role of reducers in features and pages
 - Root currently isn't a page (mb we need to reuse it over relations or containers)
@@ -195,5 +200,4 @@ Provides a router component that uses routes from pages.
 - Flow/TypeScript?
 - Graphql?
 - forms
-- biggest benefit of renderers separation?
-- src/shared for shared stuff
+- Workspace for features with yarn? (npm has plans to implement this)
