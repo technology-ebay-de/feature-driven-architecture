@@ -37,7 +37,9 @@ We use Redux to its fullest while avoiding namespace collisions and implicitness
 
 ```
 src/
-├── components/
+├── shared/
+|   ├── components/
+|   └── utils
 ├── store/
 ├── router/
 ├── features/
