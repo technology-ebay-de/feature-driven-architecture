@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
 import { createLogger } from 'redux-logger'
-import DevTools from '../components/DevTools'
+import DevTools from '../shared/components/DevTools'
 import { reducer as errorReducer } from '../features/error'
 import { reducer as profileReducer } from '../features/profile'
 import { reducer as repoReducer } from '../features/repo'

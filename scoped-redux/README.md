@@ -124,7 +124,7 @@ A feature is a self-contained, renderable, user-facing functionality, that is en
 - A feature may access shared resources.
 - A feature may fetch data from an API.
 
-## Shared components (`src/components/`)
+## Shared components (`src/shared/components/`)
 
 Every directory corresponds to one or to a set of components shared between the features or pages.
 

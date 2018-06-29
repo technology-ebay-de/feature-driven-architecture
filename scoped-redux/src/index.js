@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { Router } from './router'
 import { configure as configureStore } from './store'
-import DevTools from './components/DevTools'
+import DevTools from './shared/components/DevTools'
 
 const store = configureStore()
 

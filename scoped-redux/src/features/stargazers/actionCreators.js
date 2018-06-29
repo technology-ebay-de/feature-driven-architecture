@@ -1,4 +1,4 @@
-import * as api from '../../api'
+import * as api from '../../shared/api'
 import { handle as showError } from '../../features/error'
 import {
   LOAD,

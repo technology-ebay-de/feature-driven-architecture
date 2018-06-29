@@ -1,4 +1,4 @@
-import * as api from '../../api'
+import * as api from '../../shared/api'
 import { handle as handleError } from '../../features/error'
 import { LOAD, HANDLE_RESPONSE, HANDLE_ERROR } from './actionTypes'
 
