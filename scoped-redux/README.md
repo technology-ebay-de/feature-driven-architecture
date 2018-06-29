@@ -8,18 +8,18 @@ While React provides us with components and redux with state management layer, t
 
 Structuring application based on basic Redux examples imposes a high risk of namespace collisions of action types and action creators. It also comes with no guidance about when to connect a component to the store and leads to a props passing overhead, when too many props need to be passed from the connected top level component down the deeply nested tree. Global state brings another problem: it is easy to forget to remove properties when component stops using them over time, which leads to state pollution.
 
-React has no opinions on how to structure an application since components are universal. We need a structure that enforces high cohesion principle by keeping code implementing same feature in the same directory. Also, we want to enforce separation of [container and presentational](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) components because it leads to a cleaner code and better reuse.
+React has no opinions on how to structure an application since components are universal. We need a structure that enforces high cohesion principle by keeping code implementing same feature in the same directory. Also, we want to enforce separation of [container and presentational](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) components because it leads to a cleaner code.
 
-Another unsolved problem when every component can use every component is all components become highly interconnected at some point. To avoid this, we introduce 2 more complex types "feature" and "page". Also, we keep shared "components" clearly separated.
+Another unsolved problem when every component can use every component is - all components become highly interconnected at some point. To avoid this, we introduce 2 complex types: "feature" and "page". Also, we keep shared "components" clearly separated.
 
 ## Solution
 
 We use Redux to its fullest while avoiding namespace collisions and implicitness as much as possible by defining a set of conventions and principles, without introducing additional abstractions.
 
 1.  We introduce highly cohesive features structure.
+1.  We introduce new complex types: "feature" and "page".
 1.  We introduce `features` and `pages` namespaces to the state.
-1.  We introduce namespaced action types.
-1.  We introduce new higher-level types: features and pages.
+1.  We introduce scoped action types.
 
 ## Terminology
 
@@ -87,13 +87,29 @@ Every page renders contents of the entire document. It is designed to use featur
 
 ## Feature (`src/features/{feature}/`)
 
-A feature is a self-contained, renderable, user-facing functionality, that is encapsulated and reusable on different pages. Our goal is to be able to remove a feature completely by removing its directory, without leaving unused code behind. We need to keep it as cohesive as possible. This should also allow more autonomy in feature development for different teams. A change in a feature should not implicitly break a different feature. You should be able to swap out a feature on a page without breaking other pages still using the old one.
+A feature is a self-contained, renderable, user-facing functionality, that is encapsulated and reusable on different pages.
+
+### Goals
+
+- Be able to remove a feature completely by removing its directory, without leaving unused code behind.
+- Allow more autonomy in feature development for different teams.
+- A change in a feature should not implicitly break a different feature.
+- You should be able to swap out a feature on a page without breaking other pages still using the old one.
+
+### How
+
+- We need to keep it as cohesive as possible - action creators, action types, selectors, components and everything else a feature needs should be in a corresponding feature directory.
+- Extract code into shared directories only when required by more than one feature and only if functionality is complex enough.
+- Always use one subtree in the global state: `state.features.{feature}`. Never access anything else from state directly.
+- Accept props from the page if there is external data that a feature doesn't have.
 
 ### Must not
 
 - A feature must not import from other features.
 - A feature must not import from pages.
 - A feature must not access any other state than `state.features.{feature}`.
+- A feature must export a reducer.
+- A feature must connect to the store.
 
 ### Must
 
@@ -103,8 +119,6 @@ A feature is a self-contained, renderable, user-facing functionality, that is en
 ### May
 
 - A feature may export a subroute for the router.
-- A feature may export a reducer.
-- A feature may connect to the store.
 - A feature may access the feature state `state.features.{feature}`.
 - A feature component may accept props.
 - A feature may access shared resources.
