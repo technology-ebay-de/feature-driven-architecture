@@ -135,6 +135,21 @@ We use a single store for the entire application. Here you may:
 - Combine all reducers.
 - Apply middleware.
 
+### State shape
+
+```json
+{
+  "pages": {
+    "pageA": {},
+    "pageB": {}
+  },
+  "features": {
+    "featureA": {},
+    "featureB": {}
+  }  
+}
+```
+
 ## Router (`src/router/`)
 
 Provides a router component that uses routes from pages.
