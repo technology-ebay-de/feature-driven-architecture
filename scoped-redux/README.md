@@ -141,22 +141,17 @@ Provides a router component that uses routes from pages.
 
 ## Todo
 
-- Use state based router?
-- How to use subroute in a feature?
-- How to implement and test side effects in features? (effect(fn)?)
+- Where does feature starts and where does it ends? What if feature gets too big?
+- How to implement and test side effects in features?
 - How to get the data of one feature from another?
-- Implement a new feature that demonstrates data exchange between features:
-  - On profile page:
-    - Display a badge in front of a repository listing
-  - On repo page:
-    - Display a bronze badge in front of search if repository has > 100 stars
-    - Display a silver badge in front of search if repository has > 500 stars
-    - Display a gold badge in front of search if repository has > 1000 stars
-- Remove dependency to features from store by using registration pattern. Currently when removing a feature, it needs to be removed from store.
+  - Implement a new feature that demonstrates data exchange between features.
+- Remove dependency to features in store by using registration pattern. Currently when removing a feature, it needs to be removed from store.
+- How to use subroute in a feature?
 - Describe the role of selectors in features and pages
 - Describe the role of reducers in features and pages
 - Root currently isn't a page (mb we need to reuse it over relations or containers)
-- Use reselect?
+- Use reselect.
+- Use state based router?
 - Make it work on codesandbox
 - Flow/TypeScript?
-- Graphql
+- Graphql?
