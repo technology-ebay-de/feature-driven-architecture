@@ -108,8 +108,6 @@ A feature is a self-contained, renderable, user-facing functionality, that is en
 - A feature must not import from other features.
 - A feature must not import from pages.
 - A feature must not access any other state than `state.features.{feature}`.
-- A feature must export a reducer.
-- A feature must connect to the store.
 
 ### Must
 
@@ -118,6 +116,8 @@ A feature is a self-contained, renderable, user-facing functionality, that is en
 
 ### May
 
+- A feature may export a reducer.
+- A feature may connect to the store.
 - A feature may export a subroute for the router.
 - A feature may access the feature state `state.features.{feature}`.
 - A feature component may accept props.
@@ -175,7 +175,7 @@ Provides a router component that uses routes from pages.
 - How to get the data of one feature from another?
   - Implement a new feature that demonstrates data exchange between features.
 - Remove dependency to features in store by using registration pattern. Currently when removing a feature, it needs to be removed from store.
-- How to use subroute in a feature?
+- How to use subroute in a feature (nested routing)?
 - Describe the role of selectors in features and pages
 - Describe the role of reducers in features and pages
 - Root currently isn't a page (mb we need to reuse it over relations or containers)
@@ -184,3 +184,6 @@ Provides a router component that uses routes from pages.
 - Make it work on codesandbox
 - Flow/TypeScript?
 - Graphql?
+- forms
+- biggest benefit of renderers separation?
+- src/shared for shared stuff
