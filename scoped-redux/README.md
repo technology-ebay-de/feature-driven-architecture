@@ -30,7 +30,7 @@ We use Redux to its fullest while avoiding namespace collisions and implicitness
 ## Terminology
 
 - "components" - React components
-- "containers" - React component without rendering DOM elements, may use renderers
+- "containers" - React component without rendering DOM elements or CSS, may use renderers
 - "renderers" - React component, equivalent to presentational components renders DOM elements
 - "store" - Redux store
 - "action creators" - Redux action creators
