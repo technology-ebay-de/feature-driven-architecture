@@ -11,8 +11,9 @@ While React provides us with components and redux with state management layer, t
 Structuring application based on basic Redux examples imposes a high risk of namespace collisions of action types and action creators. It also comes with no guidance about when to connect a component to the store and leads to a props passing overhead, when too many props need to be passed from the connected top level component down the deeply nested tree.
 
 Global state brings 2 further challenges:
-1. State dependencies are implicit. You never know what will break once you change it.
-1. It is easy to forget to remove properties when component stops using them over time, which leads to state pollution.
+
+1.  State dependencies are implicit. You never know what will break once you change it.
+1.  It is easy to forget to remove properties when component stops using them over time, which leads to state pollution.
 
 React has no opinions on how to structure an application since components are universal. We need a structure that enforces high cohesion principle by keeping code implementing same feature in the same directory.
 
@@ -103,8 +104,7 @@ A feature is a self-contained, renderable, user-facing functionality, that is en
 - Allow more autonomy in feature development for different teams.
 - A change in a feature should not implicitly break a different feature.
 - You should be able to swap out a feature on a page without breaking other pages still using the old one.
-- Enforce separation of [container and presentational](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0) components, because it leads to a cleaner code.
-
+- Enforce separation of container and presentational components, because it leads to a cleaner code.
 
 #### How
 
@@ -170,13 +170,15 @@ We use a single store for the entire application. Here you may:
   "features": {
     "featureA": {},
     "featureB": {}
-  }  
+  }
 }
 ```
 
 ## Router (`src/router/`)
 
 Provides a router component that uses routes from pages.
+
+## Containers and renderers
 
 ## Todo
 
